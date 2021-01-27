@@ -27,35 +27,41 @@ public class principal {
 			System.out.println("Generando equipo...");
 			Jugador[] equipo = Generate(num);
 			System.out.println("Equipo Generado");
+			for (int i = 0; i < equipo.length; i++) {
+				System.out.print(equipo[i].getNombre() + " ");
+				System.out.print(equipo[i].getApellidos()+ " ");
+				System.out.print(equipo[i].getPosicion()+ " ");
+				System.out.println(equipo[i].getDorsal()+ " ");
+			}
 		break;
 		case 2 :
 			System.out.println("Desordenando equipo...");
-			DesordenarEquipo();
+		//	DesordenarEquipo();
 			System.out.println("Equipo desordenado");
 		break;
 		case 3 :
 			System.out.println("Buscando jugador...");
-			BuscarJugador();
+		//	BuscarJugador();
 			System.out.println("Jugador encontrado");
 		break;
 		case 4 :
 			System.out.println("Ordenando equipo(Bubble)...");
-			OrdenarEquipoBubble();
+		//	OrdenarEquipoBubble();
 			System.out.println("Equipo Ordenado");
 		break;
 		case 5 :
 			System.out.println("Ordenando equipo(Quick)...");
-			OrdenarEquipoQuick();
+		//	OrdenarEquipoQuick();
 			System.out.println("Equipo ordenado");
 		break;
 		case 6 :
 			System.out.println("Comparando algoritmos de orden...");
-			AlgComparados();
+		//	AlgComparados();
 			System.out.println("Algoritmos comparados");
 		break;	
 		case 7 :
 			System.out.println("Saliendo...");
-			Salir();
+		//	Salir();
 			System.out.println("Estás fuera");
 		break;	
 		
