@@ -12,36 +12,34 @@ public class principal {
 		System.out.println("Numero de jugadores: ");
 		int num = sc.nextInt();
 		System.out.println("Generando equipo...");
-		Jugador equipo = Generate(num);
+		Jugador[] equipo = Generate(num);
 	}
 
 	
-	private static Jugador Generate(int num) {
+	private static Jugador[] Generate(int num) {
 		
 		Jugador [] equipito = new Jugador [num];
 		
 		for (int i = 0; i < num; i++) {
 			equipito[i] = new Jugador(nombreRand(), apellidoRand(), posicionRand(), dorsalRand());
 		}
-		
-		return null;
-		
+		return equipito;
 	}
 
 
-	private static Object dorsalRand() {
+	private static int dorsalRand() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
-	private static Object posicionRand() {
+	private static String posicionRand() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
-	private static Object apellidoRand() {
+	private static String apellidoRand() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -63,7 +61,7 @@ public class principal {
 				"Agustín", "Bartolomé", "Blas",
 				"Aimar", "Basilio", "Juan", "Antonio",
 				"Aitor", "Benito", "Boris",
-				"Alano", "Benjamín", "Juan", "Carlos",
+				"Alano", "Benjamín", "Juan", "Carlos",	
 				"Alberto", "Bernardo", "Borja",
 				"Aldo", "Bienvenido", "Brahim",
 				"Aleix", "Blas", "Brais",
