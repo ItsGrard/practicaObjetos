@@ -29,15 +29,39 @@ public class principal {
 			System.out.println("Equipo Generado");
 		break;
 		case 2 :
-		
+			System.out.println("Desordenando equipo...");
+			DesordenarEquipo();
+			System.out.println("Equipo desordenado");
 		break;
-			
-			
+		case 3 :
+			System.out.println("Buscando jugador...");
+			BuscarJugador();
+			System.out.println("Jugador encontrado");
+		break;
+		case 4 :
+			System.out.println("Ordenando equipo(Bubble)...");
+			OrdenarEquipoBubble();
+			System.out.println("Equipo Ordenado");
+		break;
+		case 5 :
+			System.out.println("Ordenando equipo(Quick)...");
+			OrdenarEquipoQuick();
+			System.out.println("Equipo ordenado");
+		break;
+		case 6 :
+			System.out.println("Comparando algoritmos de orden...");
+			AlgComparados();
+			System.out.println("Algoritmos comparados");
+		break;	
+		case 7 :
+			System.out.println("Saliendo...");
+			Salir();
+			System.out.println("Estás fuera");
+		break;	
 		
 		
 		}
-		System.out.println("Generando equipo...");
-		Jugador[] equipo = Generate(num);
+	
 	}
 
 	
