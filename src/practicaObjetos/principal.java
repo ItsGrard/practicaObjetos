@@ -40,8 +40,43 @@ public class principal {
 
 
 	private static String apellidoRand() {
-		// TODO Auto-generated method stub
-		return null;
+		Random random = new Random();
+		
+		String apellidos [] = {"Acosta", "Acuña", "Aguilar", 
+				"Aguirre", "Agustín", "Ahumada", 
+				"Alanis", "Alarcón", "Alayón", 
+				"Alcázar", "Alcocer", "Alfaro",
+			 	"Almendárez", "Altamirano", 
+			 	"Álvarez", "Alzate", "Amador", 
+			 	"Anaya", "Argüelles", "Arjona", 
+			 	"Arriaga", "Arrollo", "Ayala",
+			 	"Baca", "Báez", "Baños", 
+			 	"Barba", "Barrera", "Barrientos", 
+			 	"Barriga", "Bastida", "Batalla", 
+			 	"Bautista", "Bazán", "Becerra", 
+			 	"Becerril", "Bello", "Beltrán", 
+			 	"Benítez", "Bernal", "Bolaños", 
+			 	"Bonilla", "Borges", "Bustamante", 
+			 	"Busto", "Caballero", "Cabeza", 
+			 	"Cabrera", "Cadenas", "Caldera", 
+			 	"Calleja", "Calles", "Camacho", 
+			 	"Camareno", "Camarillo", "Campos", 
+			 	"Cárdenas", "Cardoso", "Carranza", 
+			 	"Carrillo", "Carvajal", "Carvallo",
+			 	 "Casas", "Castellanos", "Castañeda", 
+			 	 "Cepeda", "Cerda", "Cervantes",  
+			 	 "Cevallos", "Cevedo", "Chávez",  
+			 	 "Cisneros", "Collado", "Cordero", 
+			 	 "Cornejo", "Correa", "Corro", 
+			 	 "Cuéllar", "Cuervo", "Cuesta", 
+			 	 "Cuevas", "Chavira", "Céspedes",
+			 	 "Daniel", "Darío", "Dávila", 
+			 	 "De Aguilar", "De Alba", "De la Cruz", 
+			 	 "De la Cuesta", "De la Fuente", "De la Rosa", 
+			 	 "Del Castillo", "Doblado", "Domínguez", 
+			 	 "Donato", "Dorado", "Duarte",
+			 	 "Dueñas", "Echeverilla", "Enríquez"};
+		return apellidos[random.nextInt()];
 	}
 
 
