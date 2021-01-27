@@ -11,6 +11,31 @@ public class principal {
 		
 		System.out.println("Numero de jugadores: ");
 		int num = sc.nextInt();
+		
+		System.out.println("¿Qué quiere hacer?");
+		System.out.println("1 - Generar Equipo");
+		System.out.println("2 - Desordenar Equipo");
+		System.out.println("3 - Buscar jugador");
+		System.out.println("4 - Ordenar Equipo (Bubble)");
+		System.out.println("5 - Ordenar Equipo (Quick)");
+		System.out.println("6 - Comparar Algortimos de Orden");
+		System.out.println("7 - Salir");
+		
+		switch (sc.nextInt()) {
+		
+		case 1 :
+			System.out.println("Generando equipo...");
+			Jugador[] equipo = Generate(num);
+			System.out.println("Equipo Generado");
+		break;
+		case 2 :
+		
+		break;
+			
+			
+		
+		
+		}
 		System.out.println("Generando equipo...");
 		Jugador[] equipo = Generate(num);
 	}
@@ -21,21 +46,15 @@ public class principal {
 		Jugador [] equipito = new Jugador [num];
 		
 		for (int i = 0; i < num; i++) {
-			equipito[i] = new Jugador(nombreRand(), apellidoRand(), posicionRand(), dorsalRand());
+			equipito[i] = new Jugador(nombreRand(), apellidoRand(), posicionRand(), i);
 		}
 		return equipito;
 	}
 
-
-	private static int dorsalRand() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	private static String posicionRand() {
-		// TODO Auto-generated method stub
-		return null;
+		Random random = new Random();
+		String [] posiciones = {"portero","defensa", "centrocampista", "delantero"};
+		return posiciones[random.nextInt(4)];
 	}
 
 
@@ -76,7 +95,7 @@ public class principal {
 			 	 "Del Castillo", "Doblado", "Domínguez", 
 			 	 "Donato", "Dorado", "Duarte",
 			 	 "Dueñas", "Echeverilla", "Enríquez"};
-		return apellidos[random.nextInt()];
+		return apellidos[random.nextInt(100)];
 	}
 
 
@@ -114,7 +133,7 @@ public class principal {
 				"Amin", "Claudio", "Clemente",
 				"Anastasio", "Clemente", "Conrado",
 				"Ander", "Conrado", "Constantino"};
-		return nombres[random.nextInt()];
+		return nombres[random.nextInt(100)];
 	}
 	
 	
