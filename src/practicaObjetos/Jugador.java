@@ -1,14 +1,10 @@
 package practicaObjetos;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Scanner;
 
 public class Jugador{
 	private String nombre;
 	private String apellidos;
-	private String posición;
+	private String posicion;
 	private int dorsal;
 	
 	// variables
@@ -17,7 +13,7 @@ public class Jugador{
 		// constructor
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.posición = posición;
+		this.posicion = posición;
 		this.dorsal = dorsal;
 	}
 	public void setNombre(String nombre) {
@@ -26,8 +22,19 @@ public class Jugador{
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public void setPosicion(String posición) {
-		this.posición = posición;
+	public void setPosicion(String posicion) {
+		String [] posiciones= {"Portero", "Defensa", "Centrocampista", "Delantero"};
+		for (String pos:posiciones) {
+			if (posicion.equals(pos)) {
+				this.posicion=posicion;
+			}
+		
+		}
+		if (this.posicion.equals(null)) {
+			System.out.println("Error esas posiciones no están disponibles");
+		}
+		this.posicion = posicion;
+		
 	}
 	public void setDorsal(int dorsal) {
 		this.dorsal=dorsal;
@@ -39,7 +46,7 @@ public class Jugador{
 		return this.apellidos;
 	}
 	public String getPosicion() {
-		return this.posición;
+		return this.posicion;
 	}
 	public int getDorsal() {
 		return this.dorsal;
