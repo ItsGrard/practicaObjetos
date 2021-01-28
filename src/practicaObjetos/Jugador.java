@@ -36,6 +36,7 @@ public class Jugador{
 		this.posicion = posicion;
 		
 	}
+	
 	public void setDorsal(int dorsal) {
 		this.dorsal=dorsal;
 	}
