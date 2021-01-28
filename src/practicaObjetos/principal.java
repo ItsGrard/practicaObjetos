@@ -39,6 +39,12 @@ public class principal {
 			if (equipo != null) {
 				DesordenarEquipo(equipo);
 				System.out.println("Equipo desordenado");
+				for (int i = 0; i < equipo.length; i++) {
+					System.out.print(equipo[i].getNombre() + " ");
+					System.out.print(equipo[i].getApellidos()+ " ");
+					System.out.print(equipo[i].getPosicion()+ " ");
+					System.out.println(equipo[i].getDorsal()+ " ");
+				}
 			}
 			else System.out.println("No existen jugadores en el equipo.");
 		
@@ -79,14 +85,16 @@ public class principal {
 	private static Jugador [] DesordenarEquipo(Jugador [] equipo) {
 		Jugador aux;
 		Random rPos = new Random();
-		int last;
-		for (int i = 0; i < equipo.length; i++) {
+		int last, anterior;
+		for (int i = 0; i < Math.random() * (equipo.length*3 - equipo.length + 1) + equipo.length; i++) {
 			last = rPos.nextInt(equipo.length-1);
 			aux = equipo[last];
+			anterior = rPos.nextInt(equipo.length-1);
+			equipo[last] = equipo[anterior];
+			equipo[anterior] = aux;
 			
 		}
-		
-		return null;
+		return equipo;
 	}
 
 
