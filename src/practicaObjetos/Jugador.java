@@ -27,13 +27,11 @@ public class Jugador{
 		for (String pos:posiciones) {
 			if (posicion.equals(pos)) {
 				this.posicion=posicion;
-			}
-		
+			}	
 		}
 		if (this.posicion.equals(null)) {
 			System.out.println("Error esas posiciones no están disponibles");
 		}
-		this.posicion = posicion;
 		
 	}
 	
