@@ -11,73 +11,71 @@ public class principal {
 		
 		System.out.println("Numero de jugadores: ");
 		int num = sc.nextInt();
-		
-		System.out.println("¿Qué quiere hacer?");
-		System.out.println("1 - Generar Equipo");
-		System.out.println("2 - Desordenar Equipo");
-		System.out.println("3 - Buscar jugador");
-		System.out.println("4 - Ordenar Equipo (Bubble)");
-		System.out.println("5 - Ordenar Equipo (Quick)");
-		System.out.println("6 - Comparar Algortimos de Orden");
-		System.out.println("7 - Salir");
-		
-		switch (sc.nextInt()) {
-		
-		case 1 :
-			System.out.println("Generando equipo...");
-			equipo = Generate(num);
-			System.out.println("Equipo Generado");
-			for (int i = 0; i < equipo.length; i++) {
-				System.out.print(equipo[i].getNombre() + " ");
-				System.out.print(equipo[i].getApellidos()+ " ");
-				System.out.print(equipo[i].getPosicion()+ " ");
-				System.out.println(equipo[i].getDorsal()+ " ");
-			}
-		break;
-		case 2 :
-			System.out.println("Desordenando equipo...");
-			if (equipo != null) {
-				DesordenarEquipo(equipo);
-				System.out.println("Equipo desordenado");
+		do {
+			System.out.println("¿Qué quiere hacer?");
+			System.out.println("1 - Generar Equipo");
+			System.out.println("2 - Desordenar Equipo");
+			System.out.println("3 - Buscar jugador");
+			System.out.println("4 - Ordenar Equipo (Bubble)");
+			System.out.println("5 - Ordenar Equipo (Quick)");
+			System.out.println("6 - Comparar Algortimos de Orden");
+			System.out.println("7 - Salir");
+			
+			switch (sc.nextInt()) {
+			
+			case 1 :
+				System.out.println("Generando equipo...");
+				equipo = Generate(num);
+				System.out.println("Equipo Generado");
 				for (int i = 0; i < equipo.length; i++) {
 					System.out.print(equipo[i].getNombre() + " ");
 					System.out.print(equipo[i].getApellidos()+ " ");
 					System.out.print(equipo[i].getPosicion()+ " ");
 					System.out.println(equipo[i].getDorsal()+ " ");
 				}
-			}
-			else System.out.println("No existen jugadores en el equipo.");
-		
+			break;
+			case 2 :
+				System.out.println("Desordenando equipo...");
+				if (equipo != null) {
+					DesordenarEquipo(equipo);
+					System.out.println("Equipo desordenado");
+					for (int i = 0; i < equipo.length; i++) {
+						System.out.print(equipo[i].getNombre() + " ");
+						System.out.print(equipo[i].getApellidos()+ " ");
+						System.out.print(equipo[i].getPosicion()+ " ");
+						System.out.println(equipo[i].getDorsal()+ " ");
+					}
+				}
+				else System.out.println("No existen jugadores en el equipo.");
 			
-		break;
-		case 3 :
-			System.out.println("Buscando jugador...");
-		//	BuscarJugador();
-			System.out.println("Jugador encontrado");
-		break;
-		case 4 :
-			System.out.println("Ordenando equipo(Bubble)...");
-		//	OrdenarEquipoBubble();
-			System.out.println("Equipo Ordenado");
-		break;
-		case 5 :
-			System.out.println("Ordenando equipo(Quick)...");
-		//	OrdenarEquipoQuick();
-			System.out.println("Equipo ordenado");
-		break;
-		case 6 :
-			System.out.println("Comparando algoritmos de orden...");
-		//	AlgComparados();
-			System.out.println("Algoritmos comparados");
-		break;	
-		case 7 :
-			System.out.println("Saliendo...");
-		//	Salir();
-			System.out.println("Estás fuera");
-		break;	
-		
-		
-		}
+				
+			break;
+			case 3 :
+				System.out.println("Buscando jugador...");
+			//	BuscarJugador();
+				equipo[2].setPosicion("delantero");
+				System.out.println("Jugador encontrado");
+			break;
+			case 4 :
+				System.out.println("Ordenando equipo(Bubble)...");
+			//	OrdenarEquipoBubble();
+				System.out.println("Equipo Ordenado");
+			break;
+			case 5 :
+				System.out.println("Ordenando equipo(Quick)...");
+			//	OrdenarEquipoQuick();
+				System.out.println("Equipo ordenado");
+			break;
+			case 6 :
+				System.out.println("Comparando algoritmos de orden...");
+			//	AlgComparados();
+				System.out.println("Algoritmos comparados");
+			break;	
+			
+			
+			}
+		} while(sc.nextInt() != 7);
+		System.out.println("test");
 	
 	}
 
@@ -86,7 +84,7 @@ public class principal {
 		Jugador aux;
 		Random rPos = new Random();
 		int last, anterior;
-		for (int i = 0; i < Math.random() * (equipo.length*3 - equipo.length + 1) + equipo.length; i++) {
+		for (int i = 0; i < Math.random() * (equipo.length*3 - equipo.length +1) + equipo.length; i++) {
 			last = rPos.nextInt(equipo.length-1);
 			aux = equipo[last];
 			anterior = rPos.nextInt(equipo.length-1);

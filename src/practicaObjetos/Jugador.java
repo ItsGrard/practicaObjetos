@@ -1,5 +1,6 @@
 package practicaObjetos;
 
+import java.util.Scanner;
 
 public class Jugador{
 	private String nombre;
@@ -22,15 +23,19 @@ public class Jugador{
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
+	
 	public void setPosicion(String posicion) {
+		Scanner sc = new Scanner(System.in);
 		String [] posiciones= {"Portero", "Defensa", "Centrocampista", "Delantero"};
 		for (String pos:posiciones) {
-			if (posicion.equals(pos)) {
+			if (posicion.equalsIgnoreCase(pos)) {
 				this.posicion=posicion;
 			}	
 		}
 		if (this.posicion.equals(null)) {
-			System.out.println("Error esas posiciones no están disponibles");
+			System.err.println("Error esas posiciones no están disponibles");
+			System.out.println("Por favor, inserte una posición válida, estas son: Portero, Defensa, Centrocampista, Delantero");
+			setPosicion(sc.next());
 		}
 		
 	}
