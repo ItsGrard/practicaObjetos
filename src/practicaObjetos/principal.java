@@ -6,7 +6,7 @@ import java.util.Random;
 public class principal {
 
 	public static void main(String[] args) {
-		
+		Jugador[] equipo = null;
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Numero de jugadores: ");
@@ -25,7 +25,7 @@ public class principal {
 		
 		case 1 :
 			System.out.println("Generando equipo...");
-			Jugador[] equipo = Generate(num);
+			equipo = Generate(num);
 			System.out.println("Equipo Generado");
 			for (int i = 0; i < equipo.length; i++) {
 				System.out.print(equipo[i].getNombre() + " ");
@@ -36,8 +36,13 @@ public class principal {
 		break;
 		case 2 :
 			System.out.println("Desordenando equipo...");
-		//	DesordenarEquipo();
-			System.out.println("Equipo desordenado");
+			if (equipo != null) {
+				DesordenarEquipo(equipo);
+				System.out.println("Equipo desordenado");
+			}
+			else System.out.println("No existen jugadores en el equipo.");
+		
+			
 		break;
 		case 3 :
 			System.out.println("Buscando jugador...");
@@ -71,6 +76,20 @@ public class principal {
 	}
 
 	
+	private static Jugador [] DesordenarEquipo(Jugador [] equipo) {
+		Jugador aux;
+		Random rPos = new Random();
+		int last;
+		for (int i = 0; i < equipo.length; i++) {
+			last = rPos.nextInt(equipo.length-1);
+			aux = equipo[last];
+			
+		}
+		
+		return null;
+	}
+
+
 	private static Jugador[] Generate(int num) {
 		
 		Jugador [] equipito = new Jugador [num];
@@ -93,7 +112,7 @@ public class principal {
 		
 		String apellidos [] = {"Acosta", "Acuña", "Aguilar", 
 				"Aguirre", "Agustín", "Ahumada", 
-				"Alanis", "Alarcón", "Alayón", 
+				"Alanis", "Alarcón", "Paredes", 
 				"Alcázar", "Alcocer", "Alfaro",
 			 	"Almendárez", "Altamirano", 
 			 	"Álvarez", "Alzate", "Amador", 
@@ -119,7 +138,7 @@ public class principal {
 			 	 "Cornejo", "Correa", "Corro", 
 			 	 "Cuéllar", "Cuervo", "Cuesta", 
 			 	 "Cuevas", "Chavira", "Céspedes",
-			 	 "Daniel", "Darío", "Dávila", 
+			 	 "Daniel", "Darío", "Jones", 
 			 	 "De Aguilar", "De Alba", "De la Cruz", 
 			 	 "De la Cuesta", "De la Fuente", "De la Rosa", 
 			 	 "Del Castillo", "Doblado", "Domínguez", 
@@ -131,13 +150,13 @@ public class principal {
 
 	private static String nombreRand() {
 		Random random = new Random();
-		String nombres [] = {"Aarón", "Ander", "Joaquín",
+		String nombres [] = {"Aarón", "Ander", "Armando",
 				"Abel", "Andrés", "Joel",
 				"Abelardo", "Ángel", "Jon",
 				"Abraham", "Aníbal", "Jordi",
 				"Adalberto", "Antonio", "Jorge",
 				"Adam", "Arnau", "José",
-				"Adán", "Arturo", "Jose", "Antonio",
+				"Adán", "Arturo", "Marco", "Antonio",
 				"Adiran", "Asier", "Jose", "Luis",
 				"Adolfo", "Augusto", "Jose", "Manuel",
 				"Adrià", "Aurelio", "Jose", "Maria",
