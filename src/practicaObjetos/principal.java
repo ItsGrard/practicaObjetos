@@ -8,20 +8,20 @@ public class principal {
 	public static void main(String[] args) {
 		Jugador[] equipo = null;
 		Scanner sc = new Scanner(System.in);
-		
+		int res = 0;
 		System.out.println("Numero de jugadores: ");
 		int num = sc.nextInt();
+		System.out.println("¿Qué quiere hacer?");
+		System.out.println("1 - Generar Equipo");
+		System.out.println("2 - Desordenar Equipo");
+		System.out.println("3 - Buscar jugador");
+		System.out.println("4 - Ordenar Equipo (Bubble)");
+		System.out.println("5 - Ordenar Equipo (Quick)");
+		System.out.println("6 - Comparar Algortimos de Orden");
+		System.out.println("7 - Salir");
 		do {
-			System.out.println("¿Qué quiere hacer?");
-			System.out.println("1 - Generar Equipo");
-			System.out.println("2 - Desordenar Equipo");
-			System.out.println("3 - Buscar jugador");
-			System.out.println("4 - Ordenar Equipo (Bubble)");
-			System.out.println("5 - Ordenar Equipo (Quick)");
-			System.out.println("6 - Comparar Algortimos de Orden");
-			System.out.println("7 - Salir");
-			
-			switch (sc.nextInt()) {
+			res = sc.nextInt();
+			switch (res) {
 			
 			case 1 :
 				System.out.println("Generando equipo...");
@@ -51,8 +51,8 @@ public class principal {
 				
 			break;
 			case 3 :
-				System.out.println("Buscando jugador...");
-			//	BuscarJugador();
+				System.out.println("Inserte nombre, apellido o dorsal");
+				if (BuscarJugador(sc.next(), equipo) == null) System.out.println("No se ha encontrado el jugador"); 
 				System.out.println("Jugador encontrado");
 			break;
 			case 4 :
@@ -73,12 +73,39 @@ public class principal {
 			
 			
 			}
-		} while(sc.nextInt() != 7);
+			System.out.println();
+			System.out.println("¿Qué quiere hacer?");
+			System.out.println("1 - Generar Equipo");
+			System.out.println("2 - Desordenar Equipo");
+			System.out.println("3 - Buscar jugador");
+			System.out.println("4 - Ordenar Equipo (Bubble)");
+			System.out.println("5 - Ordenar Equipo (Quick)");
+			System.out.println("6 - Comparar Algortimos de Orden");
+			System.out.println("7 - Salir");
+		} while(res != 7);
 		System.out.println("test");
 	
 	}
 
 	
+	private static Jugador BuscarJugador(String jugador, Jugador [] equipo) {
+		Jugador [] candidatos;
+		
+		if (jugador.charAt(0) <= '9' || jugador.charAt(0) >= '0') {
+			int dorsal = Integer.parseInt(jugador);
+			for (Jugador num : equipo) {
+				if (num.getDorsal() == dorsal) return num;
+			}
+		}else {
+			for (Jugador nombre : equipo) {
+				if (nombre.getNombre().equalsIgnoreCase(jugador)) return nombre ;
+				else if (nombre.getApellidos().equalsIgnoreCase(jugador)) return nombre;
+			}
+		}
+		return null;
+	}
+
+
 	private static Jugador [] DesordenarEquipo(Jugador [] equipo) {
 		Jugador aux;
 		Random rPos = new Random();
