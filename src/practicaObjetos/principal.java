@@ -53,7 +53,6 @@ public class principal {
 			case 3 :
 				System.out.println("Buscando jugador...");
 			//	BuscarJugador();
-				equipo[2].setPosicion("delantero");
 				System.out.println("Jugador encontrado");
 			break;
 			case 4 :

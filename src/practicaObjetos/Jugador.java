@@ -25,6 +25,7 @@ public class Jugador{
 	}
 	
 	public void setPosicion(String posicion) {
+		this.posicion = "noValida";
 		Scanner sc = new Scanner(System.in);
 		String [] posiciones= {"Portero", "Defensa", "Centrocampista", "Delantero"};
 		for (String pos:posiciones) {
@@ -32,7 +33,7 @@ public class Jugador{
 				this.posicion=posicion;
 			}	
 		}
-		if (this.posicion.equals(null)) {
+		if (this.posicion.equals("noValida")) {
 			System.err.println("Error esas posiciones no están disponibles");
 			System.out.println("Por favor, inserte una posición válida, estas son: Portero, Defensa, Centrocampista, Delantero");
 			setPosicion(sc.next());
