@@ -27,24 +27,15 @@ public class principal {
 				System.out.println("Generando equipo...");
 				equipo = Generate(num);
 				System.out.println("Equipo Generado");
-				for (int i = 0; i < equipo.length; i++) {
-					System.out.print(equipo[i].getNombre() + " ");
-					System.out.print(equipo[i].getApellidos()+ " ");
-					System.out.print(equipo[i].getPosicion()+ " ");
-					System.out.println(equipo[i].getDorsal()+ " ");
-				}
+				for (int i = 0; i < equipo.length; i++)  System.out.println(Imprimir (equipo[i]));
 			break;
 			case 2 :
 				System.out.println("Desordenando equipo...");
 				if (equipo != null) {
 					DesordenarEquipo(equipo);
 					System.out.println("Equipo desordenado");
-					for (int i = 0; i < equipo.length; i++) {
-						System.out.print(equipo[i].getNombre() + " ");
-						System.out.print(equipo[i].getApellidos()+ " ");
-						System.out.print(equipo[i].getPosicion()+ " ");
-						System.out.println(equipo[i].getDorsal()+ " ");
-					}
+					for (int i = 0; i < equipo.length; i++)  System.out.println(Imprimir(equipo[i]));
+				
 				}
 				else System.out.println("No existen jugadores en el equipo.");
 			
@@ -52,8 +43,12 @@ public class principal {
 			break;
 			case 3 :
 				System.out.println("Inserte nombre, apellido o dorsal");
-				if (BuscarJugador(sc.next(), equipo) == null) System.out.println("No se ha encontrado el jugador"); 
+				String jug = sc.next();
+				if (BuscarJugador(jug, equipo) == null) System.out.println("No se ha encontrado el jugador");
+				else {
 				System.out.println("Jugador encontrado");
+				System.out.println(Imprimir(BuscarJugador(jug, equipo)));
+				}
 			break;
 			case 4 :
 				System.out.println("Ordenando equipo(Bubble)...");
@@ -87,21 +82,53 @@ public class principal {
 	
 	}
 
-	
+	private static String Imprimir (Jugador jugador) {
+		return jugador.getNombre() + " " +jugador.getApellidos() + " " + jugador.getPosicion() + " " + jugador.getDorsal() + ".";
+	}
 	private static Jugador BuscarJugador(String jugador, Jugador [] equipo) {
 		Jugador [] candidatos;
-		
+		Jugador res = null;
 		if (jugador.charAt(0) <= '9' || jugador.charAt(0) >= '0') {
 			int dorsal = Integer.parseInt(jugador);
-			for (Jugador num : equipo) {
-				if (num.getDorsal() == dorsal) return num;
-			}
+			res = BuscarDorsal(dorsal, equipo);
 		}else {
-			for (Jugador nombre : equipo) {
-				if (nombre.getNombre().equalsIgnoreCase(jugador)) return nombre ;
-				else if (nombre.getApellidos().equalsIgnoreCase(jugador)) return nombre;
+			res = BuscarNombre(jugador, equipo);
+		}
+		return res;
+	}
+
+
+	private static Jugador BuscarNombre(String jugador, Jugador[] equipo) {
+		int L = 0;
+		int R = equipo.length -1;
+		int M = (L+R)/2;
+		
+		while (L <= R) {
+			M = (L+R)/2;
+			
+		}
+		
+		
+		return null;
+	}
+
+	private static Jugador BuscarDorsal(int dorsal, Jugador [] equipo) {
+		int i = 0;
+		int j = equipo.length -1;
+		boolean found = false;
+		
+		while(i < equipo.length -1 && j > 0 && !found ) {
+			if (equipo[i].getDorsal() == dorsal || equipo[j].getDorsal() == dorsal) found = true;
+			else {
+				i++;
+				j--;
 			}
 		}
+		if (found) {
+			if (equipo[i].getDorsal() == dorsal) return equipo[i];
+			else return equipo[j];
+		}
+		
 		return null;
 	}
 
