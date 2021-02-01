@@ -44,10 +44,11 @@ public class principal {
 			case 3 :
 				System.out.println("Inserte nombre, apellido o dorsal");
 				String jug = sc.next();
-				if (BuscarJugador(jug, equipo) == null) System.out.println("No se ha encontrado el jugador");
+				Jugador buscado = BuscarJugador(jug, equipo);
+				if (buscado == null) System.out.println("No se ha encontrado el jugador");
 				else {
 				System.out.println("Jugador encontrado");
-				System.out.println(Imprimir(BuscarJugador(jug, equipo)));
+				System.out.println(Imprimir(buscado));
 				}
 			break;
 			case 4 :
@@ -88,7 +89,7 @@ public class principal {
 	private static Jugador BuscarJugador(String jugador, Jugador [] equipo) {
 		Jugador [] candidatos;
 		Jugador res = null;
-		if (jugador.charAt(0) <= '9' || jugador.charAt(0) >= '0') {
+		if (jugador.charAt(0) == '0' || jugador.charAt(0) == '1' || jugador.charAt(0) == '2' || jugador.charAt(0) == '3' || jugador.charAt(0) == '4' || jugador.charAt(0) == '5' || jugador.charAt(0) == '6' || jugador.charAt(0) == '7' || jugador.charAt(0) == '8' || jugador.charAt(0) == '9') {
 			int dorsal = Integer.parseInt(jugador);
 			res = BuscarDorsal(dorsal, equipo);
 		}else {
@@ -99,16 +100,22 @@ public class principal {
 
 
 	private static Jugador BuscarNombre(String jugador, Jugador[] equipo) {
-		int L = 0;
-		int R = equipo.length -1;
-		int M = (L+R)/2;
+		int l = 0;
+		int r = equipo.length -1;
+		int m = (l+r)/2;
 		
-		while (L <= R) {
-			M = (L+R)/2;
+		while (l <= r) {
+			m = (l+r)/2;
 			
-		}
-		
-		
+			 int res = jugador.compareTo(equipo[m].getNombre()); 
+			  
+	            if (res == 0) return equipo[m]; 
+	            
+	            if (res > 0) l = m + 1;
+	            
+	            else r = m - 1; 
+	        } 
+			
 		return null;
 	}
 
@@ -117,7 +124,7 @@ public class principal {
 		int j = equipo.length -1;
 		boolean found = false;
 		
-		while(i < equipo.length -1 && j > 0 && !found ) {
+		while(i < j && j > i && !found ) {
 			if (equipo[i].getDorsal() == dorsal || equipo[j].getDorsal() == dorsal) found = true;
 			else {
 				i++;
