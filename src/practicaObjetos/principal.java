@@ -110,16 +110,25 @@ public class principal {
 	private static Jugador [] OrdenarEquipoBubble(Jugador[] equipo) {
 		
 		Jugador temp;
-		
+		boolean ordenado = false;
+		int pasos = 0;
 		for (int i = 0; i < equipo.length-1; i++) {
+			if (ordenado) {
+			System.out.println("NUMERO PASOS: " +pasos); 
+			return equipo;
+			}
+			ordenado = true;
 			for (int j = 0; j < equipo.length-1 -i -1; j++) {
+				pasos++;
 				if (equipo[j].getDorsal() > equipo[j+1].getDorsal()) { 
                     temp = equipo[j];
                     equipo[j] = equipo[j+1];
                     equipo[j+1] = temp;
+                    ordenado = false;
 				}
 			}
 		}
+		System.out.println("NUMERO PASOS: " +pasos);
 		return equipo;
 	}
 
