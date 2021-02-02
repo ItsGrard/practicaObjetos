@@ -53,12 +53,12 @@ public class principal {
 			break;
 			case 4 :
 				System.out.println("Ordenando equipo(Bubble)...");
-			//	OrdenarEquipoBubble();
+				OrdenarEquipoBubble(equipo);
 				System.out.println("Equipo Ordenado");
 			break;
 			case 5 :
 				System.out.println("Ordenando equipo(Quick)...");
-			//	OrdenarEquipoQuick();
+				OrdenarEquipoQuick(equipo);
 				System.out.println("Equipo ordenado");
 			break;
 			case 6 :
@@ -83,6 +83,40 @@ public class principal {
 	
 	}
 
+	private static Jugador [] OrdenarEquipoQuick(Jugador[] equipo) {
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return null;
+	}
+
+	private static Jugador [] OrdenarEquipoBubble(Jugador[] equipo) {
+		
+		Jugador temp;
+		
+		for (int i = 0; i < equipo.length-1; i++) {
+			for (int j = 0; j < equipo.length-1 -i -1; j++) {
+				
+			}
+		}
+		
+		return null;
+	}
+
 	private static String Imprimir (Jugador jugador) {
 		return jugador.getNombre() + " " +jugador.getApellidos() + " " + jugador.getPosicion() + " " + jugador.getDorsal() + ".";
 	}
@@ -91,9 +125,10 @@ public class principal {
 		Jugador res = null;
 		if (jugador.charAt(0) == '0' || jugador.charAt(0) == '1' || jugador.charAt(0) == '2' || jugador.charAt(0) == '3' || jugador.charAt(0) == '4' || jugador.charAt(0) == '5' || jugador.charAt(0) == '6' || jugador.charAt(0) == '7' || jugador.charAt(0) == '8' || jugador.charAt(0) == '9') {
 			int dorsal = Integer.parseInt(jugador);
-			res = BuscarDorsal(dorsal, equipo);
+			res = BuscarDorsalBinaria(dorsal, equipo);
 		}else {
-			res = BuscarNombre(jugador, equipo);
+			//res = BuscarNombre(jugador, equipo);
+			System.err.println("No implementado");
 		}
 		return res;
 	}
@@ -118,7 +153,8 @@ public class principal {
 			
 		return null;
 	}
-
+	
+// Old dorsal search
 	private static Jugador BuscarDorsal(int dorsal, Jugador [] equipo) {
 		int i = 0;
 		int j = equipo.length -1;
@@ -136,6 +172,24 @@ public class principal {
 			else return equipo[j];
 		}
 		
+		return null;
+	}
+	
+	private static Jugador BuscarDorsalBinaria (int dorsal, Jugador [] equipo) {
+		int l = 0;
+		int r = equipo.length -1;
+		int m = (l+r)/2;
+		
+		while (l <= r) {
+			m = (l+r)/2; 
+			  
+	            if ( dorsal == (equipo[m].getDorsal())) return equipo[m]; 
+	            
+	            if (dorsal > equipo[m].getDorsal()) l = m + 1;
+	            
+	            else r = m - 1; 
+	        } 
+			
 		return null;
 	}
 
