@@ -53,8 +53,11 @@ public class principal {
 			break;
 			case 4 :
 				System.out.println("Ordenando equipo(Bubble)...");
-				OrdenarEquipoBubble(equipo);
+				if(equipo != null) {OrdenarEquipoBubble(equipo);
 				System.out.println("Equipo Ordenado");
+				for (int i = 0; i < equipo.length; i++)  System.out.println(Imprimir(equipo[i]));
+				}
+				else System.err.println("No exite el equipo");
 			break;
 			case 5 :
 				System.out.println("Ordenando equipo(Quick)...");
@@ -110,11 +113,14 @@ public class principal {
 		
 		for (int i = 0; i < equipo.length-1; i++) {
 			for (int j = 0; j < equipo.length-1 -i -1; j++) {
-				
+				if (equipo[j].getDorsal() > equipo[j+1].getDorsal()) { 
+                    temp = equipo[j];
+                    equipo[j] = equipo[j+1];
+                    equipo[j+1] = temp;
+				}
 			}
 		}
-		
-		return null;
+		return equipo;
 	}
 
 	private static String Imprimir (Jugador jugador) {
