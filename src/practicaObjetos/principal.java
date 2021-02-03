@@ -57,11 +57,12 @@ public class principal {
 				System.out.println("Equipo Ordenado");
 				for (int i = 0; i < equipo.length; i++)  System.out.println(Imprimir(equipo[i]));
 				}
-				else System.err.println("No exite el equipo");
+				else System.err.println("No existe el equipo");
 			break;
 			case 5 :
 				System.out.println("Ordenando equipo(Quick)...");
-				OrdenarEquipoQuick(equipo);
+				Jugador [] jugQuick = OrdenarEquipoQuick(equipo, 0, equipo.length-1);
+				for (Jugador jquick : jugQuick) System.out.println(Imprimir(jquick));
 				System.out.println("Equipo ordenado");
 			break;
 			case 6 :
@@ -86,25 +87,29 @@ public class principal {
 	
 	}
 
-	private static Jugador [] OrdenarEquipoQuick(Jugador[] equipo) {
+	private static Jugador [] OrdenarEquipoQuick(Jugador[] equipo, int izq, int der) {
 	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return null;
+			Jugador pivot = equipo[izq];
+			int i = izq;
+			int j = der;
+			Jugador temp;
+			
+			while (i<j) {
+				while (equipo[i].getDorsal() <= pivot.getDorsal() && i < j) i++;
+				while (equipo[j].getDorsal() > pivot.getDorsal()) j--;
+					if (i < j) {
+						temp = equipo[i];
+						equipo[i] = equipo[j];
+						equipo[j] = temp;
+					}
+			}
+			equipo[izq] = equipo[j];
+			equipo[j]=pivot;
+			
+			if (izq < j-1) OrdenarEquipoQuick(equipo, izq, j-1);
+			if (der > j+1) OrdenarEquipoQuick(equipo, j+1, der);
+
+		return equipo;
 	}
 
 	private static Jugador [] OrdenarEquipoBubble(Jugador[] equipo) {
