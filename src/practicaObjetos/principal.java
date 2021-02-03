@@ -2,6 +2,7 @@ package practicaObjetos;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.util.*;
 
 public class principal {
 
@@ -21,6 +22,10 @@ public class principal {
 		System.out.println("7 - Salir");
 		do {
 			res = sc.nextInt();
+			if (res < 1 && res > 7) {
+			System.out.println("El número debe estar entre 1 y 7 inclusive.");
+			res = sc.nextInt();
+			}
 			switch (res) {
 			
 			case 1 :
@@ -62,12 +67,15 @@ public class principal {
 			case 5 :
 				System.out.println("Ordenando equipo(Quick)...");
 				Jugador [] jugQuick = OrdenarEquipoQuick(equipo, 0, equipo.length-1);
-				for (Jugador jquick : jugQuick) System.out.println(Imprimir(jquick));
+				for (int i = 0; i < jugQuick.length-1; i++) {
+					if (jugQuick[i] != null) System.out.println(Imprimir(jugQuick[i]));
+					else break;
+				}
 				System.out.println("Equipo ordenado");
 			break;
 			case 6 :
 				System.out.println("Comparando algoritmos de orden...");
-			//	AlgComparados();
+				AlgComparados(equipo);
 				System.out.println("Algoritmos comparados");
 			break;	
 			
@@ -85,6 +93,35 @@ public class principal {
 		} while(res != 7);
 		System.out.println("test");
 	
+	}
+
+	private static void AlgComparados(Jugador [] equipo) {
+		
+		//Bubble
+		Jugador [] miArr = Arrays.copyOf(equipo, equipo.length);
+		Jugador [] bub = DesordenarEquipo(miArr);
+		
+		long inicio = System.nanoTime();
+		OrdenarEquipoBubble(bub);
+		long fin = System.nanoTime();
+		double res = (double) (fin - inicio) / 1e+9;
+		System.out.println("Bubblesort ha tardado: " + res + ".");
+		
+		
+		
+		//Quick
+		Jugador [] miArr2 = Arrays.copyOf(equipo, equipo.length);
+		Jugador [] qu = DesordenarEquipo(miArr2);
+		
+		long inicio2 = System.nanoTime();
+		OrdenarEquipoQuick(qu, 0, qu.length-1 );
+		long fin2 = System.nanoTime();
+		double res2 = (double) (fin2 - inicio2) / 1e+9;
+		System.out.println("Quicksort ha tardado: " + res2 + ".");
+		
+		if (res < res2) System.out.println("El ganador es Bubblesort!");
+		else System.out.println("El ganador es Quicksort!");
+		
 	}
 
 	private static Jugador [] OrdenarEquipoQuick(Jugador[] equipo, int izq, int der) {
