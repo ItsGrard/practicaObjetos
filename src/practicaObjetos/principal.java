@@ -136,37 +136,38 @@ public class principal {
 		return jugador.getNombre() + " " +jugador.getApellidos() + " " + jugador.getPosicion() + " " + jugador.getDorsal() + ".";
 	}
 	private static Jugador BuscarJugador(String jugador, Jugador [] equipo) {
-		Jugador [] candidatos;
+		Jugador [] candidatos = null;
 		Jugador res = null;
 		if (jugador.charAt(0) == '0' || jugador.charAt(0) == '1' || jugador.charAt(0) == '2' || jugador.charAt(0) == '3' || jugador.charAt(0) == '4' || jugador.charAt(0) == '5' || jugador.charAt(0) == '6' || jugador.charAt(0) == '7' || jugador.charAt(0) == '8' || jugador.charAt(0) == '9') {
+			System.out.println("IF1");
 			int dorsal = Integer.parseInt(jugador);
 			res = BuscarDorsalBinaria(dorsal, equipo);
+			System.out.println("IF");
 		}else {
-			//res = BuscarNombre(jugador, equipo);
-			System.err.println("No implementado");
+			candidatos = BuscarNombre(jugador, equipo);
+			System.out.println("resultados");
+			for (Jugador jug : candidatos) System.out.println(Imprimir(jug));
+			
 		}
 		return res;
 	}
 
 
-	private static Jugador BuscarNombre(String jugador, Jugador[] equipo) {
-		int l = 0;
-		int r = equipo.length -1;
-		int m = (l+r)/2;
+	@SuppressWarnings("null")
+	private static Jugador [] BuscarNombre(String jugador, Jugador[] equipo) {
 		
-		while (l <= r) {
-			m = (l+r)/2;
-			
-			 int res = jugador.compareTo(equipo[m].getNombre()); 
-			  
-	            if (res == 0) return equipo[m]; 
-	            
-	            if (res > 0) l = m + 1;
-	            
-	            else r = m - 1; 
-	        } 
-			
-		return null;
+		Jugador [] miEquipo = new Jugador[equipo.length];
+		int j = 0;
+		 for (int i = 0; i < equipo.length; i++) {
+			 System.out.println("en el for: " +  equipo[i].getNombre().toUpperCase());
+			 System.out.println("jugador: "+ jugador.toUpperCase());
+			 if (equipo[i].getNombre().equalsIgnoreCase(jugador)) {
+				 System.out.println("encontrado");
+				 miEquipo[j] = equipo[i];
+				 j++;
+			 }
+		 }
+		return miEquipo;
 	}
 	
 // Old dorsal search
