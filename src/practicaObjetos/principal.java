@@ -91,7 +91,6 @@ public class principal {
 			System.out.println("6 - Comparar Algortimos de Orden");
 			System.out.println("7 - Salir");
 		} while(res != 7);
-		System.out.println("test");
 	
 	}
 
@@ -106,9 +105,7 @@ public class principal {
 		long fin = System.nanoTime();
 		double res = (double) (fin - inicio) / 1e+9;
 		System.out.println("Bubblesort ha tardado: " + res + ".");
-		
-		
-		
+
 		//Quick
 		Jugador [] miArr2 = Arrays.copyOf(equipo, equipo.length);
 		Jugador [] qu = DesordenarEquipo(miArr2);
@@ -153,15 +150,12 @@ public class principal {
 		
 		Jugador temp;
 		boolean ordenado = false;
-		int pasos = 0;
 		for (int i = 0; i < equipo.length-1; i++) {
 			if (ordenado) {
-			System.out.println("NUMERO PASOS: " +pasos); 
 			return equipo;
 			}
 			ordenado = true;
 			for (int j = 0; j < equipo.length-1 -i -1; j++) {
-				pasos++;
 				if (equipo[j].getDorsal() > equipo[j+1].getDorsal()) { 
                     temp = equipo[j];
                     equipo[j] = equipo[j+1];
@@ -170,7 +164,6 @@ public class principal {
 				}
 			}
 		}
-		System.out.println("NUMERO PASOS: " +pasos);
 		return equipo;
 	}
 
@@ -181,10 +174,8 @@ public class principal {
 		Jugador [] candidatos = null;
 		Jugador res = null;
 		if (jugador.charAt(0) == '0' || jugador.charAt(0) == '1' || jugador.charAt(0) == '2' || jugador.charAt(0) == '3' || jugador.charAt(0) == '4' || jugador.charAt(0) == '5' || jugador.charAt(0) == '6' || jugador.charAt(0) == '7' || jugador.charAt(0) == '8' || jugador.charAt(0) == '9') {
-			System.out.println("IF1");
 			int dorsal = Integer.parseInt(jugador);
 			res = BuscarDorsalBinaria(dorsal, equipo);
-			System.out.println("IF");
 		}else {
 			candidatos = BuscarNombre(jugador, equipo);
 			System.out.println("resultados");
@@ -195,7 +186,7 @@ public class principal {
 	}
 
 
-	@SuppressWarnings("null")
+	@SuppressWarnings("null") //funsiona a medias, al ser el array.length = al equipo.lenth y haber menos nombre que numero total de nombres intetna acceder a un indice nulo
 	private static Jugador [] BuscarNombre(String jugador, Jugador[] equipo) {
 		
 		Jugador [] miEquipo = new Jugador[equipo.length];
