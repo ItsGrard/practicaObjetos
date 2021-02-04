@@ -1,3 +1,6 @@
+// Gerardo Marín Jaime
+// Alejandro Vicente Jarnald
+
 package practicaObjetos;
 
 import java.util.Scanner;
@@ -6,6 +9,7 @@ import java.util.*;
 
 public class principal {
 
+	// Main methid shows the menu, asks for input and enter the switch statement where different methods are called
 	public static void main(String[] args) {
 		Jugador[] equipo = null;
 		Scanner sc = new Scanner(System.in);
@@ -93,7 +97,8 @@ public class principal {
 		} while(res != 7);
 	
 	}
-
+	
+	// This method calls both sorting algorithms and uses the execution time difference to check their efficiency 
 	private static void AlgComparados(Jugador [] equipo) {
 		
 		//Bubble
@@ -120,7 +125,8 @@ public class principal {
 		else System.out.println("El ganador es Quicksort!");
 		
 	}
-
+	
+	
 	private static Jugador [] OrdenarEquipoQuick(Jugador[] equipo, int izq, int der) {
 	
 			Jugador pivot = equipo[izq];
@@ -166,10 +172,13 @@ public class principal {
 		}
 		return equipo;
 	}
-
+	
+	
 	private static String Imprimir (Jugador jugador) {
 		return jugador.getNombre() + " " +jugador.getApellidos() + " " + jugador.getPosicion() + " " + jugador.getDorsal() + ".";
 	}
+	
+	// Searchs player, if the first character of jugador is a number it'll call the method which searchs by dorsal using binary search
 	private static Jugador BuscarJugador(String jugador, Jugador [] equipo) {
 		Jugador [] candidatos = null;
 		Jugador res = null;
@@ -185,8 +194,10 @@ public class principal {
 		return res;
 	}
 
+	
+	// Searchs player by name, known error not fixed yet. Kind of working though
+	@SuppressWarnings("null") 
 
-	@SuppressWarnings("null") //funsiona a medias, al ser el array.length = al equipo.lenth y haber menos nombre que numero total de nombres intetna acceder a un indice nulo
 	private static Jugador [] BuscarNombre(String jugador, Jugador[] equipo) {
 		
 		Jugador [] miEquipo = new Jugador[equipo.length];
@@ -203,7 +214,7 @@ public class principal {
 		return miEquipo;
 	}
 	
-// Old dorsal search
+// Old dorsal search, dumped 'cause we had to do a binary search
 	private static Jugador BuscarDorsal(int dorsal, Jugador [] equipo) {
 		int i = 0;
 		int j = equipo.length -1;
@@ -224,6 +235,7 @@ public class principal {
 		return null;
 	}
 	
+	// Binary search using dorsal value
 	private static Jugador BuscarDorsalBinaria (int dorsal, Jugador [] equipo) {
 		int l = 0;
 		int r = equipo.length -1;
@@ -247,18 +259,19 @@ public class principal {
 		Jugador aux;
 		Random rPos = new Random();
 		int last, anterior;
-		for (int i = 0; i < Math.random() * (equipo.length*3 - equipo.length +1) + equipo.length; i++) {
-			last = rPos.nextInt(equipo.length-1);
-			aux = equipo[last];
-			anterior = rPos.nextInt(equipo.length-1);
-			equipo[last] = equipo[anterior];
-			equipo[anterior] = aux;
-			
+		// get a range from 0 to a random number being it maximum value three times the team length
+		for (int i = 0; i < Math.random() * (equipo.length*3 - equipo.length +1) + equipo.length; i++) { 
+			last = rPos.nextInt(equipo.length-1); //get a random number within the range of the array
+			aux = equipo[last]; //copy the content of that random index
+			anterior = rPos.nextInt(equipo.length-1); //get another random index
+			equipo[last] = equipo[anterior]; //copy the content of the index into the one we had copied to the aux variable
+			equipo[anterior] = aux; //get that last index and replace it with aux, thus switching both indexes together
+			//repeat
 		}
 		return equipo;
 	}
 
-
+	//Generates a new team and returns it
 	private static Jugador[] Generate(int num) {
 		
 		Jugador [] equipito = new Jugador [num];

@@ -1,22 +1,29 @@
+// Gerardo Marín Jaime
+// Alejandro Vicente Jarnald
+
+
 package practicaObjetos;
 
 import java.util.Scanner;
 
 public class Jugador{
+	// variables
 	private String nombre;
 	private String apellidos;
 	private String posicion;
 	private int dorsal;
 	
-	// variables
-	
+
+	// constructor
 	public Jugador(String nombre, String apellidos, String posición, int dorsal) {
-		// constructor
+
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.posicion = posición;
 		this.dorsal = dorsal;
 	}
+	
+	//setters
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -44,6 +51,7 @@ public class Jugador{
 	public void setDorsal(int dorsal) {
 		this.dorsal=dorsal;
 	}
+	//getters
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -57,5 +65,5 @@ public class Jugador{
 		return this.dorsal;
 	}
 	
-	}	// metodo imprimir
+	}	
 
